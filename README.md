@@ -8,10 +8,10 @@
 
 ## Start WiFi Hotspot
 
-`sudo /home/pi/.digitalpignage/start_wifi_ap.sh`
+`sudo ~/.digitalpignage/start_wifi_ap.sh`
 
 ## Start WiFi Client
 
-`sudo /home/pi/.digitalpignage/start_wifi_client.sh`
+`sudo ~/.digitalpignage/start_wifi_client.sh`
 
 
