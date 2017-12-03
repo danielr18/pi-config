@@ -41,18 +41,9 @@ systemctl enable dnsmasq
 user=${SUDO_USER:-$(whoami)}
 app_folder=/home/$user/.digitalpignage
 
-mkdir -p $app_folder/confs
-
-cat > $app_folder/resources.txt <<EOF
-https://raw.githubusercontent.com/danielr18/pi-config/master/confs/dhcpcd.cli$
-https://raw.githubusercontent.com/danielr18/pi-config/master/confs/dhcpcd.ap.$
-https://raw.githubusercontent.com/danielr18/pi-config/master/start_wifi_ap.sh
-https://raw.githubusercontent.com/danielr18/pi-config/master/start_wifi_clien$
-EOF
-
-wget -q -N -P $app_folder -i $app_folder/resources.txt
-mv $app_folder/dhcpcd.ap.conf $app_folder/confs
-mv $app_folder/dhcpcd.client.conf $app_folder/confs
-rm $app_folder/resources.txt
+rm -rf $app_folder
+git clone https://github.com/danielr18/pi-config.git $app_folder
+rm $app_folder/README.md && rm $app_folder/setup_ap.sh
+rm -rf $app_folder/.git
 
 echo "All done! Please reboot"
