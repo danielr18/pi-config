@@ -38,4 +38,21 @@ sed -i -- 's/#DAEMON_CONF=""/DAEMON_CONF="\/etc\/hostapd\/hostapd.conf"/g' /etc/
 systemctl enable hostapd
 systemctl enable dnsmasq
 
+user=${SUDO_USER:-$(whoami)}
+app_folder=/home/$user/.digitalpignage
+
+mkdir -p $app_folder/confs
+
+cat > $app_folder/resources.txt <<EOF
+https://raw.githubusercontent.com/danielr18/pi-config/master/confs/dhcpcd.cli$
+https://raw.githubusercontent.com/danielr18/pi-config/master/confs/dhcpcd.ap.$
+https://raw.githubusercontent.com/danielr18/pi-config/master/start_wifi_ap.sh
+https://raw.githubusercontent.com/danielr18/pi-config/master/start_wifi_clien$
+EOF
+
+wget -q -N -P $app_folder -i $app_folder/resources.txt
+mv $app_folder/dhcpcd.ap.conf $app_folder/confs
+mv $app_folder/dhcpcd.client.conf $app_folder/confs
+rm $app_folder/resources.txt
+
 echo "All done! Please reboot"
