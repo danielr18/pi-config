@@ -5,8 +5,10 @@ if [ "$EUID" -ne 0 ]
 	exit
 fi
 
+user=${SUDO_USER:-$(whoami)}
+
 ip link set dev wlan0 down
-cp /home/pi/Documents/dhcpcd.ap.conf /etc/dhcpcd.conf
+cp /home/$user/.digitalpignage/confs/dhcpcd.ap.conf /etc/dhcpcd.conf
 service dhcpcd restart
 service dnsmasq restart
 service hostapd restart
