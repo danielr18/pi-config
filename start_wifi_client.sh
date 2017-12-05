@@ -7,6 +7,7 @@ fi
 
 user=${SUDO_USER:-$(whoami)}
 ip link set dev wlan0 down
+ip address delete 192.168.0.1/24 dev wlan0
 cp /home/$user/.digitalpignage/confs/dhcpcd.client.conf /etc/dhcpcd.conf
 service dhcpcd restart
 service dnsmasq restart
