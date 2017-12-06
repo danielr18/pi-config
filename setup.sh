@@ -9,4 +9,4 @@ if [ "$EUID" -ne 0 ]
 fi
 
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt install nodejs
+sudo apt install nodejs -yqq
