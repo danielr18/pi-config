@@ -46,5 +46,6 @@ git clone https://github.com/danielr18/pi-config.git $app_folder
 rm $app_folder/README.md && rm $app_folder/setup_ap.sh
 rm -rf $app_folder/.git
 chmod -R 0777 $app_folder
+chmod 0777 /etc/wpa_supplicant/wpa_supplicant.conf
 
 echo "All done! Please reboot"
